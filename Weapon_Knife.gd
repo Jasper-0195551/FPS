@@ -13,6 +13,9 @@ const RELOADING_ANIM_NAME = ""
 var is_weapon_enabled = false
 
 var player_node = null
+var ammo_in_weapon = 1
+var spare_ammo = 1
+const AMMO_IN_MAG = 1
 
 func _ready():
 	pass

@@ -29,6 +29,7 @@ func fire_weapon():
 	clone.global_transform = self.global_transform
 	clone.scale = Vector3(4, 4, 4)
 	clone.BULLET_DAMAGE = DAMAGE
+	ammo_in_weapon -= 1
 
 func equip_weapon():
 	if player_node.animation_manager.current_state == IDLE_ANIM_NAME:

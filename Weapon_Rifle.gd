@@ -22,6 +22,7 @@ func _ready():
 	pass
 
 func fire_weapon():
+	ammo_in_weapon -= 1
 	var ray = $Ray_Cast
 	ray.force_raycast_update()
 

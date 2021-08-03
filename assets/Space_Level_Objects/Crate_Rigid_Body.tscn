@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/Space_Level_Objects/Metal_One.material" type="Material" id=1]
 [ext_resource path="res://assets/Space_Level_Objects/Metal_Two.material" type="Material" id=2]
 [ext_resource path="res://assets/Space_Level_Objects/Metal_Three.material" type="Material" id=3]
+[ext_resource path="res://RigidBody_hit_test.gd" type="Script" id=4]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube"
@@ -53,6 +54,7 @@ points = PoolVector3Array( 2.08203, 2.08203, -2.08203, 2.08203, -1.66504, -1.665
 mass = 6.0
 gravity_scale = 4.0
 can_sleep = false
+script = ExtResource( 4 )
 
 [node name="Crate" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )
