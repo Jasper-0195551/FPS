@@ -125,11 +125,11 @@ tracks/1/keys = {
 }
 
 [node name="Health_Pickup" type="Spatial"]
+script = ExtResource( 4 )
 
 [node name="Holder" type="Spatial" parent="."]
 
 [node name="Health_Kit" type="Spatial" parent="Holder"]
-script = ExtResource( 4 )
 
 [node name="Health_Kit" type="MeshInstance" parent="Holder/Health_Kit"]
 mesh = SubResource( 1 )

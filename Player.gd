@@ -13,6 +13,7 @@ var is_sprinting = false
 var flashlight
 
 var dir = Vector3()
+
 func add_health(additional_health):
 	health += additional_health
 	health = clamp(health, 0, MAX_HEALTH)

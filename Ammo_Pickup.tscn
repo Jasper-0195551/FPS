@@ -124,11 +124,11 @@ tracks/1/keys = {
 }
 
 [node name="Ammo_Pickup" type="Spatial"]
+script = ExtResource( 4 )
 
 [node name="Holder" type="Spatial" parent="."]
 
 [node name="Ammo_Kit" type="Spatial" parent="Holder"]
-script = ExtResource( 4 )
 
 [node name="Ammo_Box" type="MeshInstance" parent="Holder/Ammo_Kit"]
 mesh = SubResource( 1 )
