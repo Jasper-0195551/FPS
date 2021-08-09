@@ -9,7 +9,11 @@ const MAX_HEALTH = 150
 const MAX_SPRINT_SPEED = 30
 const SPRINT_ACCEL = 18
 var is_sprinting = false
-
+var grenade_amounts = {"Grenade":2, "Sticky Grenade":2}
+var current_grenade = "Grenade"
+var grenade_scene = preload("res://Grenade.tscn")
+var sticky_grenade_scene = preload("res://Sticky_Grenade.tscn")
+const GRENADE_THROW_FORCE = 50
 var flashlight
 
 var dir = Vector3()
@@ -314,3 +318,28 @@ func process_reloading(delta):
 #			if WEAPON_NUMBER_TO_NAME[weapon_change_number] != current_weapon_name:
 #				changing_weapon_name = WEAPON_NUMBER_TO_NAME[weapon_change_number]
 #			changing_weapon = true
+# ----------------------------------
+# Changing and throwing grenades
+
+	if Input.is_action_just_pressed("change_grenade"):
+		if current_grenade == "Grenade":
+			current_grenade = "Sticky Grenade"
+	elif current_grenade == "Sticky Grenade":
+		current_grenade = "Grenade"
+
+	if Input.is_action_just_pressed("fire_grenade"):
+		if grenade_amounts[current_grenade] > 0:
+			grenade_amounts[current_grenade] -= 1
+
+		var grenade_clone
+		if current_grenade == "Grenade":
+			grenade_clone = grenade_scene.instance()
+		elif current_grenade == "Sticky Grenade":
+			grenade_clone = sticky_grenade_scene.instance()
+			# Sticky grenades will stick to the player if we do not pass ourselves
+			grenade_clone.player_body = self
+
+		get_tree().root.add_child(grenade_clone)
+		grenade_clone.global_transform = $Rotation_Helper/Grenade_Toss_Pos.global_transform
+		grenade_clone.apply_impulse(Vector3(0, 0, 0), grenade_clone.global_transform.basis.z * GRENADE_THROW_FORCE)
+# ----------------------------------
